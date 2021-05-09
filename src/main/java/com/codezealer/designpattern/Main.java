@@ -1,4 +1,4 @@
-package com.codezealer;
+package com.codezealer.designpattern;
 
 import lombok.extern.log4j.Log4j2;
 
