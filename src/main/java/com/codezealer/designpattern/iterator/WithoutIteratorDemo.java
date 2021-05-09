@@ -23,8 +23,8 @@ public class WithoutIteratorDemo {
         /*for (int i=0; i<classroom.getStudents().length; i++) {
             System.out.println(classroom.getStudents()[i]);
         }*/
-        for (int i=0; i<classroom.getStudents().size(); i++) {
-            System.out.println(classroom.getStudents().get(i));
+        for (int i=0; i<classroom.getLength(); i++) {
+            System.out.println(classroom.getStudent(i));
         }
 
     }
@@ -35,8 +35,6 @@ public class WithoutIteratorDemo {
 //        Student[] students = new Student[2];
         List<Student> students = new ArrayList<>();
 
-        int index = 0;
-
 //        public Student[] getStudents() {
 //            return students;
 //        }
@@ -45,11 +43,15 @@ public class WithoutIteratorDemo {
 //            students[index++] = student;
 //        }
 
-        public List<Student> getStudents() {
-            return students;
+        public Student getStudent(int index) {
+            return students.get(index);
         }
         public void  addStudent(Student student) {
             students.add(student);
+        }
+
+        public int getLength() {
+            return students.size();
         }
 
 

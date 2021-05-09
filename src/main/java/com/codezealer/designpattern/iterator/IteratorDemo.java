@@ -1,6 +1,9 @@
 package com.codezealer.designpattern.iterator;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 采用iterator模式，遍历的时候统一用的是Iterator对象，这样内部结构变化了，也不需要修改遍历的逻辑
  */
@@ -36,7 +39,7 @@ public class IteratorDemo {
 
         @Override
         public boolean hasNext() {
-            if (index < classroom.getStudents().length) {
+            if (index < classroom.getLength()) {
                 return true;
             } else {
                 return false;
@@ -46,7 +49,7 @@ public class IteratorDemo {
 
         @Override
         public Object getNext() {
-            return classroom.getStudents()[index++];
+            return classroom.getStudent(index);
         }
     }
 
@@ -70,21 +73,33 @@ public class IteratorDemo {
     }
 
     public static class Classroom {
-        Student[] students = new Student[2];
+//        Student[] students = new Student[2];
+        List<Student> students = new ArrayList<>();
         int index = 0;
 
-        public void addStudent(Student student) {
+        /*public void addStudent(Student student) {
             students[index++] = student;
         }
 
         public Student[] getStudents() {
             return students;
+        }*/
+
+        public void addStudent(Student student) {
+            students.add(student);
+            index ++;
+        }
+        public Student getStudent(int index) {
+            return students.get(index);
         }
 
         public Iterator iterator() {
             return new ClassroomIterator(this);
         }
 
+        public int getLength () {
+            return students.size();
+        }
     }
 
 
